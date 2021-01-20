@@ -1,0 +1,48 @@
+.match{
+    padding: 30px 200px;
+    
+    .match-hero{
+        background-color: #3a39396e;
+        padding: 20px 0;
+        text-align: center;
+        font-style: italic;
+        font-size: 1.8rem;
+    }
+
+    .red-team-summoners--container, .blue-team-summoners--container{
+        padding: 30px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+    }
+
+    
+    .red-team-summoners--container{
+        background-color: #e4161645;
+    }
+
+    .blue-team-summoners--container{
+        position: relative;
+        background-color: #2837c34d;
+    
+        .versus-summoners{
+            position: absolute;
+            top: -27px;
+            font-size: 1.8rem;
+            font-style: italic;
+            letter-spacing: 10px;
+            color: gold;
+        }
+    }
+
+    .red-team-summoner--card, .blue-team-summoner--card{
+        img{
+            width: 150px;
+        }
+    }
+}
+
+.picked{
+    cursor: pointer;
+}

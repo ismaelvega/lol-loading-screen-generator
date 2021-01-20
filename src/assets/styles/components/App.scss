@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: 'DM Sans', sans-serif;
+
+}
+
+body{
+    overflow: overlay;
+    background-color: black;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: rgba(90, 90, 90, 1);
+  }
+
+::-webkit-scrollbar-track {
+background: rgba(0, 0, 0, 0.2);
+}

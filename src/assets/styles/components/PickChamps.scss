@@ -1,0 +1,44 @@
+.pick-champs{
+    width: 100%;
+    padding: 20px 200px;
+    .red-team, .blue-team{
+        padding: 20px 50px;
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+    }
+
+    .red-team{
+        background-color: #e4161663;
+    }
+
+    .blue-team{
+        background-color: #2837c363;
+    }
+
+    .versus{
+        width: 100%;
+        text-align: center;
+
+        h2{
+            padding: 10px;
+            font-size: 1.8rem;
+            font-style: italic;
+            letter-spacing: 10px;
+            color: gold;
+        }
+    }
+}
+
+.red-team-champ-option, .blue-team-champ-option{
+    text-align: center;
+    cursor: pointer;
+}
+
+.red-team-champ-option, .blue-team-champ-option{
+    img{
+        width: 50px;
+    }
+}
