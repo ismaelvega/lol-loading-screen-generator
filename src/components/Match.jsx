@@ -37,11 +37,12 @@ const Match = ({blueTeam, redTeam}) => {
   )
 }
 
-const mapStateToProps = state => ({
-  redTeam: state.redTeam,
-  blueTeam: state.blueTeam
-})
+const mapStateToProps = state => {
+  return {
+    redTeam: state.redTeam,
+    blueTeam: state.blueTeam
+  }
+}
 
-const mapDispatchToProps = dispatch => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Match)
+export default connect(mapStateToProps, null)(Match)

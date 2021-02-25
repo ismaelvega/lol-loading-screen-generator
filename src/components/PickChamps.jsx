@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { blueSummonerPick, redSummonerPick } from '../actions'
 import '../assets/styles/components/PickChamps.scss'
 
 const PickChamps = ({redTeamchamps, blueTeamChamps, blueSummonerPick, redSummonerPick, currentRedPick, currentBluePick}) =>(
@@ -10,7 +11,11 @@ const PickChamps = ({redTeamchamps, blueTeamChamps, blueSummonerPick, redSummone
           const imgSource = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/${champ.id}.png`
           return(
             <article className="red-team-champ-option" key={champ.id}>
-              <img className="champ" onClick={() => currentRedPick[0] ? null : redSummonerPick(champ)} src={imgSource} alt={champ.name} /><span>{champ.name}</span>
+              <img className="champ" 
+                   onClick={() => currentRedPick[0] 
+                      ? null 
+                        : 
+                          redSummonerPick(champ)} src={imgSource} alt={champ.name} /><span>{champ.name}</span>
             </article>
           ) 
         })
@@ -35,35 +40,18 @@ const PickChamps = ({redTeamchamps, blueTeamChamps, blueSummonerPick, redSummone
   </section>
 )
 
-const mapStateToProps = state => ({
-  redTeamchamps: state.redTeamchamps,
-  blueTeamChamps: state.blueTeamChamps,
-  currentRedPick: state.currentRedPick,
-  currentBluePick: state.currentBluePick
-})
-
-// const mapDispatchToProps = dispatch => ({})
-const mapDispatchToProps = dispatch => ({
-  redSummonerPick(champ){
-    document.querySelectorAll('.red-team-summoner--card').forEach(card => {
-      card.style['border'] = '3px solid yellow'
-      card.style['cursor'] = 'pointer'
-    })
-    dispatch({
-      type: "RED_PICK",
-      champ
-    })
-  },
-  blueSummonerPick(champ){
-    document.querySelectorAll('.blue-team-summoner--card').forEach(card => {
-      card.style['border'] = '3px solid yellow'
-      card.style['cursor'] = 'pointer'
-    })
-    dispatch({
-      type: "BLUE_PICK",
-      champ
-    })
+const mapStateToProps = state => {
+  return {
+    redTeamchamps: state.redTeamchamps,
+    blueTeamChamps: state.blueTeamChamps,
+    currentRedPick: state.currentRedPick,
+    currentBluePick: state.currentBluePick
   }
-})
+}
+
+const mapDispatchToProps = {
+ redSummonerPick,
+ blueSummonerPick
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PickChamps)

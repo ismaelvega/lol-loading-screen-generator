@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { displayCurrentRedPick, returnRedPickedChamp} from '../actions'
 import top from '../assets/images/top.png'
 import jungle from '../assets/images/jungle.png'
 import midlane from '../assets/images/midlane.png'
@@ -8,7 +9,7 @@ import support from '../assets/images/support.png'
 
 import '../assets/styles/components/Match.scss'
 
-const RedTeamSummonerCard = ({position, currentRedPick, displayCurrentPick, returnPickedChamp}) => {
+const RedTeamSummonerCard = ({position, currentRedPick, displayCurrentRedPick, returnRedPickedChamp}) => {
   const positions = [top, jungle, midlane, marksman, support]
   let imgSource = false
   let storePick = currentRedPick[0]
@@ -19,14 +20,14 @@ const RedTeamSummonerCard = ({position, currentRedPick, displayCurrentPick, retu
   
   function displayPick(event){
     if (currentRedPick[0]) {
-      displayCurrentPick(currentRedPick)
+      displayCurrentRedPick(currentRedPick)
     }
     
     if(imgSource){
       event.target.src = imgSource
       event.target.onclick = () => {
         if(storePick){
-          returnPickedChamp(storePick)
+          returnRedPickedChamp(storePick)
           event.target.classList.remove('picked')
         }
         storePick = false
@@ -43,28 +44,15 @@ const RedTeamSummonerCard = ({position, currentRedPick, displayCurrentPick, retu
   )
 }   
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+  return {
     currentRedPick: state.currentRedPick
-  })
+  }
+}
   
-//   const mapDispatchToProps = dispatch => ({})
-  const mapDispatchToProps = dispatch => ({
-    displayCurrentPick(pick){
-      document.querySelectorAll('.red-team-summoner--card').forEach(card => {
-        card.style['border'] = '3px solid transparent'
-        card.style['cursor'] = 'initial'
-      })
-      dispatch({
-        type: "DISPLAY_RED_PICK",
-        pick
-      })
-    },
-    returnPickedChamp(champ){
-      dispatch({
-        type: "RETURN_RED_PICKED_CHAMP",
-        champ
-      })
-    }
-  })
+const mapDispatchToProps = {
+  displayCurrentRedPick,
+  returnRedPickedChamp
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(RedTeamSummonerCard)
