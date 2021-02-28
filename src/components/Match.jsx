@@ -8,7 +8,7 @@ const Match = ({blueTeam, redTeam}) => {
   return( 
     <main className="match">
       <section className="match-hero">
-        <h1>League of Legends match generator</h1>
+        <h1>League of Legends loading screen generator</h1>
       </section>
 
       <section className="red-team-summoners--container">

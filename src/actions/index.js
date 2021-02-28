@@ -1,7 +1,6 @@
 export const redSummonerPick = payload => {
-    document.querySelectorAll('.red-team-summoner--card').forEach(card => {
-      card.style['border'] = '3px solid yellow'
-      card.style['cursor'] = 'pointer'
+    document.querySelectorAll('.red-team-summoner--card .champ-img').forEach(card => {
+      card.classList.add('toPick')
     })
     return {
         type: "RED_PICK",
@@ -10,9 +9,8 @@ export const redSummonerPick = payload => {
   }
 
 export const blueSummonerPick = payload => {
-    document.querySelectorAll('.blue-team-summoner--card').forEach(card => {
-      card.style['border'] = '3px solid yellow'
-      card.style['cursor'] = 'pointer'
+    document.querySelectorAll('.blue-team-summoner--card .champ-img').forEach(card => {
+      card.classList.add('toPick')
     })
     return{
       type: "BLUE_PICK",
@@ -21,31 +19,22 @@ export const blueSummonerPick = payload => {
   }
 
 export const displayCurrentRedPick = payload => {
-    document.querySelectorAll('.red-team-summoner--card').forEach(card => {
-      card.style['border'] = '3px solid transparent'
-      card.style['cursor'] = 'initial'
-    })
     return {
       type: "DISPLAY_RED_PICK",
       payload
     }
   }
 
-export const returnRedPickedChamp = payload => {
-  return {
-    type: "RETURN_RED_PICKED_CHAMP",
+export const displayCurrentBluePick = payload => {
+  return{
+    type: "DISPLAY_BLUE_PICK",
     payload
   }
 }
 
-export const displayCurrentBluePick = payload => {
-  document.querySelectorAll('.blue-team-summoner--card').forEach(card => {
-    card.style['border'] = '3px solid transparent'
-    card.style['cursor'] = 'initial'
-  })
-  
-  return{
-    type: "DISPLAY_BLUE_PICK",
+export const returnRedPickedChamp = payload => {
+  return {
+    type: "RETURN_RED_PICKED_CHAMP",
     payload
   }
 }
