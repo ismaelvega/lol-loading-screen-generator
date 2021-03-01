@@ -11,12 +11,13 @@ const PickChamps = (props) =>{
       <div className="red-team">
         {
           redTeamchamps.map(champ => {
+            const imgSource = `${imgSourceURL}${champ.id}.png`
             return(
               <article className="red-team-champ-option" key={champ.id}>
                 <img 
                   className="champ" 
-                  onClick={() => currentRedPick[0] ? null : redSummonerPick(champ)} 
-                  src={`${imgSourceURL}${champ.id}.png`} 
+                  onClick={() => currentRedPick[0] ? null : redSummonerPick(champ, imgSource)} 
+                  src={imgSource} 
                   alt={champ.name} 
                 /><span>{champ.name}</span>
               </article>
@@ -30,12 +31,13 @@ const PickChamps = (props) =>{
       <div className="blue-team">
       {
         blueTeamChamps.map(champ => {
+          const imgSource = `${imgSourceURL}${champ.id}.png`
           return(
             <article className="blue-team-champ-option" key={champ.id}>
               <img 
                 className="champ" 
-                onClick={() => currentBluePick[0] ? null : blueSummonerPick(champ)} 
-                src={`${imgSourceURL}${champ.id}.png`} 
+                onClick={() => currentBluePick[0] ? null : blueSummonerPick(champ, imgSource)} 
+                src={imgSource} 
                 alt={champ.name} 
               /><span>{champ.name}</span>
             </article>

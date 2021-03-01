@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import RedTeamSummonerCard from './RedTeamSummonerCard'
-import BlueTeamSummonerCard from './BlueTeamSummonerCard'
 import '../assets/styles/components/Match.scss'
+import SummonerCard from './SummonerCard'
 
 const Match = ({blueTeam, redTeam}) => {
   return( 
@@ -15,7 +14,12 @@ const Match = ({blueTeam, redTeam}) => {
         {
           redTeam.map(pick => {
             return(
-              <RedTeamSummonerCard position={pick} />
+              <SummonerCard 
+                position={pick} 
+                cardClass={'red-team-summoner--card'} 
+                team={'red'} 
+                key={pick.id}
+              />
             )
           })
         }
@@ -28,7 +32,12 @@ const Match = ({blueTeam, redTeam}) => {
         {
           blueTeam.map(pick => {
             return(
-              <BlueTeamSummonerCard position={pick} />
+              <SummonerCard 
+                position={pick} 
+                cardClass={'blue-team-summoner--card'} 
+                team={'blue'} 
+                key={pick.id}
+              />
             )
           })
         }

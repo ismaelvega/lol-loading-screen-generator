@@ -1,17 +1,19 @@
-export const redSummonerPick = payload => {
+export const redSummonerPick = (payload, image) => {
     document.querySelectorAll('.red-team-summoner--card .champ-img').forEach(card => {
       card.classList.add('toPick')
     })
+    document.querySelector('html').setAttribute('style', `cursor: url(${image}) 0 0, auto`);
     return {
         type: "RED_PICK",
         payload
     }
   }
 
-export const blueSummonerPick = payload => {
+export const blueSummonerPick = (payload, image) => {
     document.querySelectorAll('.blue-team-summoner--card .champ-img').forEach(card => {
       card.classList.add('toPick')
     })
+    document.querySelector('html').setAttribute('style', `cursor: url(${image}) 0 0, auto`);
     return{
       type: "BLUE_PICK",
       payload

@@ -42,6 +42,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        text-align: center;
 
         .champ-img{
             width: 160px;
@@ -52,6 +53,11 @@
             top: -32px;
             width: 60px;
             border-radius: 50%;
+        }
+
+        .summoner-name, .summoner-level{
+            padding: 5px;
+            font-size: 1rem;
         }
 
         .input-summoner-name{
