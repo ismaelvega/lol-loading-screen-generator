@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { displayCurrentRedPick, returnRedPickedChamp, displayCurrentBluePick, returnBluePickedChamp, getPickedChampSkins} from '../actions'
 import initialPositionImages from '../initialCards'
-import { getSummonerData, getSkins } from '../api'
+import { getSummonerData} from '../api'
 
 const SummonerCard = (props) => {
     const { 
@@ -11,19 +11,16 @@ const SummonerCard = (props) => {
       cardClass, 
       currentVersion, 
       currentRedPick,
-      pickedChampSkins,
       displayCurrentRedPick, 
       returnRedPickedChamp, 
       currentBluePick, 
       displayCurrentBluePick, 
-      returnBluePickedChamp,
-      getPickedChampSkins
+      returnBluePickedChamp
     } = props
 
     const redTeamSummonerCard = team === 'red'
     let imgSource = false
     let storePick = redTeamSummonerCard ? currentRedPick[0] : currentBluePick[0]
-    let champSkinsArray = []
     //if redTeamSummonerCard is false or null we asume that the team is blue instead of red
     
     if(storePick){
