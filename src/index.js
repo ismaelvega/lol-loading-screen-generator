@@ -4,7 +4,7 @@ import App from './App';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from './reducers'
-import { getDataChamps, getCurrentVersion } from './api.js'
+import { getDataChamps, getCurrentVersion} from './api.js'
 
 async function getResults(){
     const results = await getDataChamps()
@@ -47,6 +47,7 @@ async function getInitialState(){
         blueTeam: initialCards.slice(),
         currentRedPick: [],
         currentBluePick: [],
+        pickedChampSkins: [],
         currentVersion: await getCurrentVersion()
     }
 

@@ -3,6 +3,7 @@ export const redSummonerPick = (payload, image) => {
       card.classList.add('toPick')
     })
     document.querySelector('html').setAttribute('style', `cursor: url(${image}) 0 0, auto`);
+
     return {
         type: "RED_PICK",
         payload
@@ -44,6 +45,13 @@ export const returnRedPickedChamp = payload => {
 export const returnBluePickedChamp = payload => {
   return {
     type: "RETURN_BLUE_PICKED_CHAMP",
+    payload
+  }
+}
+
+export const getPickedChampSkins = payload => {
+  return {
+    type: "GET_PICKED_CHAMP_SKINS",
     payload
   }
 }

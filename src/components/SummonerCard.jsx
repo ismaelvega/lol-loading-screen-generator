@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { displayCurrentRedPick, returnRedPickedChamp, displayCurrentBluePick, returnBluePickedChamp} from '../actions'
+import { displayCurrentRedPick, returnRedPickedChamp, displayCurrentBluePick, returnBluePickedChamp, getPickedChampSkins} from '../actions'
 import initialPositionImages from '../initialCards'
-import { getSummonerData } from '../api'
+import { getSummonerData, getSkins } from '../api'
 
 const SummonerCard = (props) => {
     const { 
@@ -10,24 +10,27 @@ const SummonerCard = (props) => {
       team, 
       cardClass, 
       currentVersion, 
-      currentRedPick, 
+      currentRedPick,
+      pickedChampSkins,
       displayCurrentRedPick, 
       returnRedPickedChamp, 
       currentBluePick, 
       displayCurrentBluePick, 
-      returnBluePickedChamp
+      returnBluePickedChamp,
+      getPickedChampSkins
     } = props
 
     const redTeamSummonerCard = team === 'red'
     let imgSource = false
     let storePick = redTeamSummonerCard ? currentRedPick[0] : currentBluePick[0]
+    let champSkinsArray = []
     //if redTeamSummonerCard is false or null we asume that the team is blue instead of red
     
     if(storePick){
       imgSource = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${storePick.id}_0.jpg`
     }
     
-    function displayPick(event, colorTeam){
+    async function displayPick(event, colorTeam){
       if (storePick) {
         document.querySelector('html').setAttribute('style', `cursor: initial`);
         document.querySelectorAll(`.${colorTeam}-team-summoner--card .champ-img`)
@@ -35,12 +38,18 @@ const SummonerCard = (props) => {
             card.classList.remove('toPick')
           })
         
-        event.target.classList.add('picked')
+          event.target.classList.add('picked')
 
-        if(storePick === currentRedPick[0])
+          // const champSkins = await getSkins(currentRedPick[0].id)
+          // getPickedChampSkins(champSkins)
+          // console.log(pickedChampSkins)
+          // champSkinsArray = pickedChampSkins[0]
+          // console.log(champSkinsArray)
+
+          if(storePick === currentRedPick[0])
           displayCurrentRedPick(currentRedPick)
-          else
-            displayCurrentBluePick(currentBluePick)
+            else
+                displayCurrentBluePick(currentBluePick)
       }
         
       if(imgSource){
@@ -59,6 +68,7 @@ const SummonerCard = (props) => {
         }
     }
     const summonerIconURL = `http://ddragon.leagueoflegends.com/cdn/${currentVersion}/img/profileicon/`
+    
     return(
         <article className={cardClass}>
           <img 
@@ -91,8 +101,8 @@ const SummonerCard = (props) => {
                 summonerName.textContent = summoner.name
                 
                 // replacing the input
-                event.target.remove()
                 summonerLevel.append(summonerName)
+                event.target.remove()
               }
             }}>
           </input>
@@ -103,13 +113,15 @@ const SummonerCard = (props) => {
 const mapStateToProps = state => ({
   currentRedPick: state.currentRedPick,
   currentBluePick: state.currentBluePick,
-  currentVersion: state.currentVersion
+  currentVersion: state.currentVersion,
+  pickedChampSkins: state.pickedChampSkins
 })
 
 const mapDispatchToProps = {
   displayCurrentRedPick, 
   returnRedPickedChamp, 
   displayCurrentBluePick, 
+  getPickedChampSkins,
   returnBluePickedChamp
 }
 

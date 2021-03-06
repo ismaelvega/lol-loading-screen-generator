@@ -7,7 +7,21 @@ export async function getDataChamps(){
     const API = `https://ddragon.leagueoflegends.com/cdn/${currentVersion}/data/en_US/champion.json`
     const response = await fetch(API, {})
     const data = await response.json()
+    
     return data
+}
+
+export async function getSkins(pickedChamp){
+    const currentVersion = await getCurrentVersion()
+    const API = `https://ddragon.leagueoflegends.com/cdn/${currentVersion}/data/en_US/champion/${pickedChamp}.json`
+    const response = await fetch(API, {})
+    const champ = await response.json()
+    const data = [champ.data]
+    const dataSkins = Object.values(data[0])
+
+    const champSkins = dataSkins.map(champ => champ)
+    
+    return champSkins[0].skins
 }
 
 export async function getSummonerData(summonerName){

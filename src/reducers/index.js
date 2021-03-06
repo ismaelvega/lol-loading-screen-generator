@@ -1,6 +1,7 @@
 const reducer = (state, action) => {
     switch(action.type){
       case "RED_PICK":{
+          console.log(action.payload.id)
         return{
             ...state,
             currentRedPick: state.currentRedPick.concat(action.payload),
@@ -38,6 +39,14 @@ const reducer = (state, action) => {
           return{
               ...state,
               blueTeamChamps: state.blueTeamChamps.concat(action.payload).sort((a, b) => orderArray(a, b))
+          }
+      }
+      case "GET_PICKED_CHAMP_SKINS":{
+          console.log( action.payload)
+          console.log(typeof action.payload)
+          return{
+              ...state,
+            //   pickedChampSkins: state.pickedChampSkins.push(action.payload)
           }
       }
       default:
