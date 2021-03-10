@@ -55,6 +55,7 @@ async function getInitialState(){
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log(process.env.API_KEY)
     const initialState = await getInitialState()
     const store = createStore(reducer, initialState)
 
